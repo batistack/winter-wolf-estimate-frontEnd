@@ -8,7 +8,7 @@ import {
 import { useAuth } from "./AuthContext";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
-import Estimate from "./Pages/estimate";
+// import Estimate from "./Pages/estimate";
 import RegisterUser from "./Users/RegisterUser";
 import Login from "./Users/Login";
 import About from "./Pages/About";
@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/oneEstimate/:id" element={<OneEstimate />} />
-          <Route path="/estimates" element={<Estimate />} />
+          {/* <Route path="/estimates" element={<Estimate />} /> */}
           <Route path="/accEquip" element={<CreateAccEquip />} />
           <Route
             path="/accesoriesAndEquiments"
