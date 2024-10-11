@@ -18,6 +18,7 @@ import {
 } from "../style/HomeStyled";
 import RoomItems from "./RoomItems";
 
+
 const Home = ({ equipments, accessories, onAddItem }) => {
   return (
     <HomeWrapper>
