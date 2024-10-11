@@ -328,61 +328,61 @@ function Estimates() {
 
     doc.setTextColor(textColor);
     doc.setFontSize(12);
-    doc.text("Labor Cost:", labelX, verticalPosition);
-    doc.text(
-      `$${estimateItem.finalEstimate?.labor_cost || "N/A"}`,
-      valueX,
-      verticalPosition,
-      { align: "right" }
-    );
-    verticalPosition += 15;
+    // doc.text("Labor Cost:", labelX, verticalPosition);
+    // doc.text(
+    //   `$${estimateItem.finalEstimate?.labor_cost || "N/A"}`,
+    //   valueX,
+    //   verticalPosition,
+    //   { align: "right" }
+    // );
+    // verticalPosition += 15;
 
-    doc.text("Equipment Cost:", labelX, verticalPosition);
-    doc.text(
-      `$${estimateItem.finalEstimate?.equipment_cost || "N/A"}`,
-      valueX,
-      verticalPosition,
-      { align: "right" }
-    );
-    verticalPosition += 15;
+    // doc.text("Equipment Cost:", labelX, verticalPosition);
+    // doc.text(
+    //   `$${estimateItem.finalEstimate?.equipment_cost || "N/A"}`,
+    //   valueX,
+    //   verticalPosition,
+    //   { align: "right" }
+    // );
+    // verticalPosition += 15;
 
-    doc.text("Accessories Cost:", labelX, verticalPosition);
-    doc.text(
-      `$${estimateItem.finalEstimate?.accessories_cost || "N/A"}`,
-      valueX,
-      verticalPosition,
-      { align: "right" }
-    );
-    verticalPosition += 15;
+    // doc.text("Accessories Cost:", labelX, verticalPosition);
+    // doc.text(
+    //   `$${estimateItem.finalEstimate?.accessories_cost || "N/A"}`,
+    //   valueX,
+    //   verticalPosition,
+    //   { align: "right" }
+    // );
+    // verticalPosition += 15;
 
-    doc.text("Subtotal:", labelX, verticalPosition);
-    doc.text(
-      `$${estimateItem.finalEstimate?.subtotal || "N/A"}`,
-      valueX,
-      verticalPosition,
-      { align: "right" }
-    );
-    verticalPosition += 15;
+    // doc.text("Subtotal:", labelX, verticalPosition);
+    // doc.text(
+    //   `$${estimateItem.finalEstimate?.subtotal || "N/A"}`,
+    //   valueX,
+    //   verticalPosition,
+    //   { align: "right" }
+    // );
+    // verticalPosition += 15;
 
-    doc.text("Tax:", labelX, verticalPosition);
-    doc.text(
-      `$${estimateItem.finalEstimate?.tax || "N/A"}`,
-      valueX,
-      verticalPosition,
-      { align: "right" }
-    );
-    verticalPosition += 15;
+    // doc.text("Tax:", labelX, verticalPosition);
+    // doc.text(
+    //   `$${estimateItem.finalEstimate?.tax || "N/A"}`,
+    //   valueX,
+    //   verticalPosition,
+    //   { align: "right" }
+    // );
+    // verticalPosition += 15;
 
-    // M/C before Total Cost
-    if (estimateItem.market_cap) {
-      doc.text("M/C:", labelX, verticalPosition);
-      doc.text(`$${estimateItem.market_cap}`, valueX, verticalPosition, {
-        align: "right",
-      });
-      verticalPosition += 15;
-    }
+    // // M/C before Total Cost
+    // if (estimateItem.market_cap) {
+    //   doc.text("M/C:", labelX, verticalPosition);
+    //   doc.text(`$${estimateItem.market_cap}`, valueX, verticalPosition, {
+    //     align: "right",
+    //   });
+    //   verticalPosition += 15;
+    // }
 
-    doc.text("Total Cost:", labelX, verticalPosition);
+    doc.text("Investment Cost:", labelX, verticalPosition);
     doc.text(
       `$${estimateItem.finalEstimate?.total_cost || "N/A"}`,
       valueX,
