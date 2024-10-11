@@ -19,7 +19,7 @@ const Navbar = ({ user, onLogOff }) => {
           <>
             <NavLink to="/estimates">Estimates</NavLink>
             {/* <NavLink to="/equipments">Equipments</NavLink> */}
-            <NavLink to="/accesoriesAndEquiments">Accesories and Equipements</NavLink>
+            <NavLink to="/accesoriesAndEquiments">Accesories and Equipments</NavLink>
             <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
             <LogOffButton onClick={onLogOff}>Log Off</LogOffButton>
           </>
