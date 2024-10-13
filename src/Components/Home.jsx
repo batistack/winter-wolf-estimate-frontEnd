@@ -35,7 +35,7 @@ const Home = ({ equipments, accessories, onAddItem }) => {
           all designed to simplify your life and enhance your business
           efficiency.
         </Description>
-        <GetStartedButton>Get Started</GetStartedButton>
+        <GetStartedButton to="/register">Get Started</GetStartedButton>
       </HeroSection>
 
       <FeaturesSection>
@@ -79,7 +79,7 @@ const Home = ({ equipments, accessories, onAddItem }) => {
         <FinalCallToAction>
           Ready to Revolutionize Your Estimation Process?
         </FinalCallToAction>
-        <CallToActionButton>Sign Up Today</CallToActionButton>
+        <GetStartedButton to="/register">Sign up Today</GetStartedButton>
       </GetStartedSection>
     </HomeWrapper>
   );

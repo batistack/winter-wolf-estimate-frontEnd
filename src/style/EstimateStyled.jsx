@@ -27,7 +27,7 @@ export const EstimateContainer = styled.div`
   }
 `;
 export const StyledButton = styled.button`
-  background-color: #4CAF50; /* Green background */
+  background-color: ${primaryColor}; 
   border: none;
   color: white; /* White text */
   padding: 12px 24px; /* Padding */
@@ -41,7 +41,7 @@ export const StyledButton = styled.button`
   transition: background-color 0.3s ease; /* Smooth background transition */
 
   &:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: red; /* Darker green on hover */
   }
 
   &:disabled {

@@ -1,19 +1,17 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 // Colors
-const primaryColor = '#182d40';
-const secondaryColor = '#ffffff';
-const lightGrey = '#e8e8e8';
-const blue = '#009bdf';
-const darkGrey = '#2e2e2e';
-const black = '#0d0d0d';
-const blueColor = '#009bdf';
-const whiteText = '#ffffff';
-const greyText = '#d1d1d1';
-const accentText = '#4dbfbf';
-const darkText = '#171717';
-
-
+const primaryColor = "#182d40";
+const secondaryColor = "#ffffff";
+const lightGrey = "#e8e8e8";
+const blue = "#009bdf";
+const darkGrey = "#2e2e2e";
+const black = "#0d0d0d";
+const blueColor = "#009bdf";
+const whiteText = "#ffffff";
+const greyText = "#d1d1d1";
+const accentText = "#4dbfbf";
+const darkText = "#171717";
 
 // Log Off Button
 export const LogOffButton = styled.button`
@@ -105,7 +103,7 @@ export const Description = styled.p`
   }
 `;
 
-export const GetStartedButton = styled.button`
+export const GetStartedButton = styled(Link)`
   background-color: ${blue};
   color: ${secondaryColor};
   border: none;
@@ -114,7 +112,7 @@ export const GetStartedButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-
+  text-decoration: none;
   &:hover {
     background-color: ${darkGrey};
   }
@@ -167,7 +165,7 @@ export const FeatureItem = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s;
-  cursor:pointer;
+  cursor: pointer;
   &:hover {
     transform: translateY(-5px);
   }
@@ -220,7 +218,6 @@ export const CallToActionButton = styled(GetStartedButton)`
 `;
 export const ContentWrapper = styled.div`
   padding-top: 4rem;
-
 `;
 
 // Logo/Brand

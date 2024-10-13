@@ -93,9 +93,9 @@ export const SelectedItemContainer = styled.div`
 `;
 
 export const SelectionButton = styled.button`
-  background-color: ${({ $active }) => ($active ? blueColor : secondaryColor)};
-  color: ${({ $active }) => ($active ? secondaryColor : darkText)};
-  border: 1px solid ${blueColor};
+  background-color: ${({ $active }) => ($active ? primaryColor: primaryColor)};
+  color: ${({ $active }) => ($active ? secondaryColor : 'white')};
+  border: 1px solid ${primaryColor};
   padding: 0.6rem 1.2rem;
   margin-left: 1rem;
   cursor: pointer;
@@ -103,14 +103,14 @@ export const SelectionButton = styled.button`
   border-radius: 4px;
 
   &:hover {
-    background-color: ${blueColor};
-    color: ${secondaryColor};
+    background-color: ${primaryColor};
+    color: white;
   }
 `;
 
 // Add Item Button
 export const AddItemButton = styled.button`
-  background-color: ${blueColor};
+  background-color: ${primaryColor};
   color: ${secondaryColor};
   border: none;
   padding: 0.6rem 1rem;
@@ -130,8 +130,8 @@ export const AddItemButton = styled.button`
 
 // Styled Button for Actions
 export const StyledButton = styled.button`
-  background-color: ${blueColor};
-  color: ${secondaryColor};
+  background-color: ${primaryColor};
+  color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
@@ -141,7 +141,7 @@ export const StyledButton = styled.button`
   margin-top: 2rem;
 
   &:hover {
-    background-color: ${darkGrey};
+    background-color: ${primaryColor};
   }
 
   @media (max-width: 768px) {
@@ -167,7 +167,7 @@ export const TextInput = styled.input`
 export const NumberInput = styled.input`
   width: 120px;
   padding: 0.5rem;
-  border: 1px solid ${darkGrey};
+  border: 1px solid ${primaryColor};
   border-radius: 4px;
   box-sizing: border-box;
   @media (max-width: 768px) {
@@ -177,26 +177,26 @@ export const NumberInput = styled.input`
 `;
 
 // Generate PDF Button
-export const GeneratePDFButton = styled.button`
-  background-color: ${blueColor};
-  color: ${secondaryColor};
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 2rem;
+// export const GeneratePDFButton = styled.button`
+//   background-color: ${blueColor};
+//   color: ${secondaryColor};
+//   border: none;
+//   padding: 0.8rem 1.5rem;
+//   font-size: 1rem;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   transition: background-color 0.3s;
+//   margin-top: 2rem;
 
-  &:hover {
-    background-color: ${darkGrey};
-  }
+//   &:hover {
+//     background-color: ${darkGrey};
+//   }
 
-  @media (max-width: 768px) {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
-`;
+//   @media (max-width: 768px) {
+//     padding: 0.6rem 1.2rem;
+//     font-size: 0.9rem;
+//   }
+// `;
 export const OverlayContainer = styled.div`
   position: fixed;
   top: 0;

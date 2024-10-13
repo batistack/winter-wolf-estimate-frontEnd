@@ -206,19 +206,6 @@ function SemiEstimate() {
         onChange={(e) => setClientPhone(e.target.value)}
       />
 
-      <NumberInput
-        type="number"
-        placeholder="Labor Hours"
-        value={laborHours}
-        onChange={(e) => setLaborHours(e.target.value)}
-      />
-      <NumberInput
-        type="number"
-        placeholder="Market Cap"
-        value={marketCap}
-        onChange={(e) => setMarketCap(e.target.value)}
-      />
-      
       {/* Display for Floors, Rooms, and Items */}
       <DisplaySquare>
         {locations.map((floor, floorIndex) => (
@@ -232,7 +219,7 @@ function SemiEstimate() {
                   {room.equipment.length > 0 && <h5>Equipment:</h5>}
                   {room.equipment.map((eq) => (
                     <li key={eq.id}>
-                      {eq.name}: {eq.quantity} pcs
+                      {`${eq.name}  ${eq.brand} (${eq.quantity} pcs)`}
                     </li>
                   ))}
 
@@ -323,6 +310,8 @@ function SemiEstimate() {
         {(isAccessory ? accessories : equipments).map((item) => (
           <ItemButton key={item.id} onClick={() => handleSelectItem(item)}>
             {item.name}
+            <br />
+            {item.brand}
           </ItemButton>
         ))}
       </ItemListContainer>
@@ -341,7 +330,20 @@ function SemiEstimate() {
           </AddItemButton>
         </SelectedItemContainer>
       )}
-
+      <NumberInput
+        type="number"
+        placeholder="Labor Hours"
+        value={laborHours}
+        onChange={(e) => setLaborHours(e.target.value)}
+      />
+      <br />
+      <NumberInput
+        type="number"
+        placeholder="Market Cap"
+        value={marketCap}
+        onChange={(e) => setMarketCap(e.target.value)}
+      />
+      <br />
       <StyledButton onClick={handleCreateEstimate}>
         Create Estimate
       </StyledButton>
