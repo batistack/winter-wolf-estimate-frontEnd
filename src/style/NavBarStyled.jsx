@@ -23,9 +23,8 @@ export const NavbarWrapper = styled.nav`
   box-sizing: border-box;
 
   @media (max-width: 768px) {
+    justify-content: space-between;
     padding: 0.8rem 1rem;
-    flex-direction: column;
-    align-items: flex-start;
   }
 `;
 
@@ -46,11 +45,26 @@ export const NavLinksContainer = styled.div`
   flex: 1;
   justify-content: flex-end;
   gap: 1rem;
-  
+
   @media (max-width: 768px) {
-    width: 100%;
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: ${primaryColor};
+    width: 60%;  /* Adjust width so it only takes up part of the screen */
+    height: auto; /* Only grow as big as the content */
     flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
+    padding: 1rem;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+
+    &.open {
+      display: flex;
+      transform: translateX(0%);
+    }
   }
 `;
 
@@ -67,7 +81,9 @@ export const NavLink = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    width: 100%;
+    margin: 0.5rem 0;
   }
 `;
 
@@ -89,7 +105,37 @@ export const LogOffButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.2rem;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+`;
+
+// Hamburger Icon for mobile
+export const HamburgerIcon = styled.div`
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: ${secondaryColor};
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+// Overlay for mobile menu (closes menu when clicked outside)
+export const MobileMenuOverlay = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
   }
 `;

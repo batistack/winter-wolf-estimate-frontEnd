@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   NavbarWrapper,
@@ -6,32 +6,52 @@ import {
   NavLinksContainer,
   NavLink,
   LogOffButton,
+  HamburgerIcon,
+ 
+  MobileMenuOverlay,
 } from "../style/NavBarStyled";
 
 const Navbar = ({ user, onLogOff }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
-    <NavbarWrapper>
-      <NavLink to="/">
-        <Logo>Winter Wolf QuoteMaster</Logo>
-      </NavLink>
-      <NavLinksContainer>
-        {user ? (
-          <>
-            <NavLink to="/estimates">Estimates</NavLink>
-            {/* <NavLink to="/equipments">Equipments</NavLink> */}
-            <NavLink to="/accesoriesAndEquiments">Accesories and Equipments</NavLink>
-            <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
-            <LogOffButton onClick={onLogOff}>Log Off</LogOffButton>
-          </>
-        ) : (
-          <>
-            <NavLink to="/login">Login</NavLink>
-            <NavLink to="/register">Register</NavLink>
-            <NavLink to="/about">About</NavLink>
-          </>
-        )}
-      </NavLinksContainer>
-    </NavbarWrapper>
+    <>
+      <NavbarWrapper>
+        <NavLink to="/">
+          <Logo>Winter Wolf QuoteMaster</Logo>
+        </NavLink>
+        <HamburgerIcon onClick={toggleMenu}>
+          &#9776;
+        </HamburgerIcon>
+        <NavLinksContainer className={menuOpen ? "open" : ""}>
+          {user ? (
+            <>
+              <NavLink to="/estimates" onClick={closeMenu}>Estimates</NavLink>
+              <NavLink to="/accesoriesAndEquiments" onClick={closeMenu}>Accessories and Equipments</NavLink>
+              <NavLink to={`/profile/${user.id}`} onClick={closeMenu}>Profile</NavLink>
+              <LogOffButton onClick={() => { onLogOff(); closeMenu(); }}>Log Off</LogOffButton>
+            </>
+          ) : (
+            <>
+              <NavLink to="/login" onClick={closeMenu}>Login</NavLink>
+              <NavLink to="/register" onClick={closeMenu}>Register</NavLink>
+              <NavLink to="/about" onClick={closeMenu}>About</NavLink>
+            </>
+          )}
+        </NavLinksContainer>
+      </NavbarWrapper>
+      
+      {/* Overlay to close the menu when clicked outside */}
+      {menuOpen && <MobileMenuOverlay onClick={closeMenu} />}
+    </>
   );
 };
 
