@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +22,9 @@ import UpdateProfile from "./Users/UpdateProfile";
 import OneEstimate from "./Pages/OneEstimate";
 import AccesoriesAndEquipments from "./Pages/AccesoriesAndEquipments";
 function App() {
+
   const { user, logout } = useAuth();
+
 
   return (
     <Router>
