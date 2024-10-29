@@ -23,6 +23,10 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
+    if (user?.id) {
+      // Remove saved estimate data for the current user
+      localStorage.removeItem(`estimateProgress_${user.id}`);
+    }
     console.log('Logging out user');
     setUser(null);
     localStorage.removeItem('user'); // Remove user from localStorage

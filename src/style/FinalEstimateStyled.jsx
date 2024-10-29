@@ -20,11 +20,18 @@ export const FinalEstimateContainer = styled.div`
   color: ${darkText};
 `;
 export const StyledLink = styled(Link)`
-  color: ${secondaryColor};
+  background-color: ${primaryColor}; 
+  border: none;
+  color: white; /* White text */
+  padding: 12px 24px; /* Padding */
+  text-align: center;
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: color 0.3s;
+  display: inline-block;
+  font-size: 16px; /* Button text size */
+  margin: 4px 2px; /* Margin between buttons */
+  cursor: pointer;
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s ease;
 
   &:hover {
     color: ${blueColor};

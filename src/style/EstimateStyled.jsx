@@ -26,6 +26,59 @@ export const EstimateContainer = styled.div`
     padding: 0.5rem;
   }
 `;
+
+export const SearchBar = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid ${darkGrey};
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+
+    &:focus {
+      border-color: ${blue};
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 8px;
+      font-size: 0.9rem;
+    }
+  }
+`;
+export const SearchOptions = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: ${darkText};
+
+    input {
+      margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
+  }
+`;
+
 export const StyledButton = styled.button`
   background-color: ${primaryColor}; 
   border: none;
@@ -265,6 +318,7 @@ export const NoEstimateMessage = styled.p`
 export const EstimateListContainer = styled.div`
   width: 100%;
   max-width: 800px;
+  
 `;
 
 // Single Estimate Box
@@ -275,7 +329,7 @@ export const EstimateBox = styled.div`
   background-color: ${secondaryColor};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-
+display:grid;
   @media (max-width: 768px) {
     padding: 1rem;
   }

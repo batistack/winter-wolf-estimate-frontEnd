@@ -33,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/oneEstimate/:id" element={<OneEstimate />} />
+
           <Route path="/estimates" element={<Estimates />} />
           <Route path="/accEquip" element={<CreateAccEquip />} />
           <Route

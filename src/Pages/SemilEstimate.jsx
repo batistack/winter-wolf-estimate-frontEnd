@@ -15,8 +15,10 @@ import {
   SummarySection,
   SummaryItem,
   DisplaySquare,
+
 } from "../style/SemiEstimateStyled";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { StyledLink } from "../style/FinalEstimateStyled";
 
 function SemiEstimate() {
   const { currentUser: user } = useAuth();
@@ -48,6 +50,7 @@ function SemiEstimate() {
 
   const { id } = useParams();
 
+
   useEffect(() => {
     const fetchData = async () => {
       const [equipmentsResponse, accessoriesResponse] = await Promise.all([
@@ -58,10 +61,23 @@ function SemiEstimate() {
         setEquipments(equipmentsResponse.payload);
         setAccessories(accessoriesResponse.payload);
       }
+  
+      // Load saved estimate progress if available
+      const savedEstimate = localStorage.getItem('estimateProgress');
+      if (savedEstimate) {
+        const estimateData = JSON.parse(savedEstimate);
+        setClientName(estimateData.clientName || '');
+        setClientAddress(estimateData.clientAddress || '');
+        setClientPhone(estimateData.clientPhone || '');
+        setLocations(estimateData.locations || []);
+        setLaborHours(estimateData.laborHours || '');
+        setMarketCap(estimateData.marketCap || '');
+      }
     };
+  
     fetchData();
   }, [equipmentEndPoint, accessoryEndPoint]);
-
+  
   const handleSelectItem = (item) => {
     setSelectedItem(item);
     setQuantity(1); // Initialize quantity
@@ -172,6 +188,7 @@ function SemiEstimate() {
     });
 
     if (estimateResponse.success) {
+      localStorage.removeItem('estimateProgress');
       const estimateId = estimateResponse.payload.estimateId;
       if (estimateId) {
         const [estimateData, finalEstimateData] = await Promise.all([
@@ -183,7 +200,20 @@ function SemiEstimate() {
       }
     }
   };
+  const saveEstimateProgress = () => {
+    const estimateProgress = {
+      clientName,
+      clientAddress,
+      clientPhone,
+      locations,
+      laborHours,
+      marketCap,
+    };
 
+    localStorage.setItem('estimateProgress', JSON.stringify(estimateProgress));
+    alert('Estimate progress has been saved!');
+  };
+  
   return (
     <SemiEstimateContainer>
       <Title>Create a New Estimate</Title>
@@ -343,11 +373,13 @@ function SemiEstimate() {
         value={marketCap}
         onChange={(e) => setMarketCap(e.target.value)}
       />
+      
       <br />
+      <StyledButton onClick={saveEstimateProgress}>Save Progress</StyledButton>
+
       <StyledButton onClick={handleCreateEstimate}>
         Create Estimate
       </StyledButton>
-
       {estimate && finalEstimate && (
         <SummarySection>
           <h2>Estimate Summary</h2>
@@ -380,6 +412,9 @@ function SemiEstimate() {
           </SummaryItem>
           <SummaryItem>
             <strong>Total Cost:</strong> {finalEstimate.total_cost}
+         
+          <StyledLink to={`/estimates`}> Go to Estimates Page</StyledLink>
+    
           </SummaryItem>
         </SummarySection>
       )}

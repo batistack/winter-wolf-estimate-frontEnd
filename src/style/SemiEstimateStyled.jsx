@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 // Colors
 const primaryColor = "#182d40";
 const secondaryColor = "#ffffff";
@@ -18,6 +18,21 @@ export const SemiEstimateContainer = styled.div`
 
   @media (max-width: 768px) {
     padding: 1rem;
+  }
+`;
+export const StyledLink = styled(Link)`
+  color: ${secondaryColor};
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+
+  &:hover {
+    color: ${blueColor};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
   }
 `;
 export const ScrollableItemList = styled.div`
