@@ -50,6 +50,7 @@ const Navbar = ({ user, onLogOff }) => {
                   handleLogOff();
                   closeMenu();
                 }}
+                
               >
                 Log Off
               </LogOffButton>
