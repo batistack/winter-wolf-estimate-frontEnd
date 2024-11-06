@@ -26,7 +26,6 @@ function PDFGenerator({ estimateItem, finalEstimateData }) {
     const secondaryColor = "#f1f1f1"; // Light gray for table headers
     const textColor = "#404040"; // Dark gray for text
     const separatorColor = "#d1d1d1"; // Light gray for line separator
-    ç
 
     // Title Header - Proposal Introduction
     doc.setFont("helvetica", "bold");
@@ -65,24 +64,13 @@ function PDFGenerator({ estimateItem, finalEstimateData }) {
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(textColor);
+    doc.text(`Estimate ID: ${estimateItem.id}`, margin, verticalPosition);
     verticalPosition += 15;
-    doc.text(
-      `Client Name: ${estimateItem.client_name}`,
-      margin,
-      verticalPosition
-    );
+    doc.text(`Client Name: ${estimateItem.client_name}`, margin, verticalPosition);
     verticalPosition += 15;
-    doc.text(
-      `Client Address: ${estimateItem.client_address}`,
-      margin,
-      verticalPosition
-    );
+    doc.text(`Client Address: ${estimateItem.client_address}`, margin, verticalPosition);
     verticalPosition += 15;
-    doc.text(
-      `Client Phone: ${estimateItem.client_phone}`,
-      margin,
-      verticalPosition
-    );
+    doc.text(`Client Phone: ${estimateItem.client_phone}`, margin, verticalPosition);
 
     verticalPosition += 25;
 
@@ -245,7 +233,8 @@ We stand firmly behind the quality of our work, offering:
 
     // Save the PDF
     doc.save(`Estimate_${estimateItem.id}.pdf`);
-  };
+};
+
 
   // Function to generate Type 2 PDF
   const generatePDFType2 = () => {
