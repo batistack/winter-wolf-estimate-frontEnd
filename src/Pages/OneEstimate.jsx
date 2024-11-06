@@ -97,6 +97,9 @@ function OneEstimate() {
         <EstimateBox>
           {oneEstimate ? (
             <ClientInfo>
+              <ClientDetail >
+                <strong>Estimate ID:</strong> {oneEstimate.id}
+              </ClientDetail>
               <ClientInfoTitle>Client Information</ClientInfoTitle>
               <ClientDetail>
                 <strong>Name:</strong> {oneEstimate.client_name}
@@ -190,7 +193,7 @@ function OneEstimate() {
               <p>no data</p>
             )}
           </CostBreakdown>
-          <PDFGenerator estimateItem={oneEstimate} />
+          <PDFGenerator estimateItem={oneEstimate}  finalEstimateData={oneFinalEstimate}/>
           <StyledLink to="/estimates">Back To Estimate</StyledLink>
           <StyledButton onClick={() => handleDelete(oneEstimate.id)}>
             Delete Estimate

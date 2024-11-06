@@ -53,9 +53,9 @@ const UserProfile = () => {
         <Link to="/update_profile">
           <ActionButton>Update Profile Information</ActionButton>
         </Link>
-        <Link to="/final_estimate">
+        {/* <Link to="/final_estimate">
           <ActionButton>View Estimate History</ActionButton>
-        </Link>
+        </Link> */}
         <Link to="/accEquip">
           <ActionButton>Add materials and/or Equipment</ActionButton>
         </Link>

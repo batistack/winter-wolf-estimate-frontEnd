@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { fetchAllItems } from "../helpers/ApiCalls";
 import { StyledLink } from "../style/FinalEstimateStyled";
@@ -16,12 +15,11 @@ import {
   SearchOptions,
 } from "../style/EstimateStyled";
 
-
-function Estimates() {
+function Estimates({ formatDateTime }) {
   const [estimates, setEstimates] = useState([]);
   const [filteredEstimates, setFilteredEstimates] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchBy, setSearchBy] = useState("id"); // Default search by 'id'
+  const [searchBy, setSearchBy] = useState("name"); 
   const estimateEndPoint = import.meta.env.VITE_ESTIMATE_ENDPOINT;
   const finalEstimateEndPoint = import.meta.env.VITE_FINAL_ESTIMATE_ENDPOINT;
 
@@ -68,7 +66,9 @@ function Estimates() {
       );
     } else if (searchBy === "name") {
       filtered = estimates.filter((estimate) =>
-        estimate.client_name.toLowerCase().includes(e.target.value.toLowerCase())
+        estimate.client_name
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase())
       );
     }
 
@@ -87,12 +87,23 @@ function Estimates() {
       <SearchBar>
         <input
           type="text"
-          placeholder={`Search Estimate by ${searchBy === "id" ? "Estimate ID" : "Client Name"}`}
+          placeholder={`Search Estimate by ${
+            searchBy === "id" ? "Estimate ID" : "Client Name"
+          }`}
           value={searchQuery}
           onChange={handleSearch}
         />
       </SearchBar>
       <SearchOptions>
+        <label>
+          <input
+            type="radio"
+            name="searchBy"
+            value="name"
+            checked={searchBy === "name"}
+            onChange={handleSearchByChange}
+          />
+          Search by Client Name
         <label>
           <input
             type="radio"
@@ -103,15 +114,6 @@ function Estimates() {
           />
           Search by Estimate ID
         </label>
-        <label>
-          <input
-            type="radio"
-            name="searchBy"
-            value="name"
-            checked={searchBy === "name"}
-            onChange={handleSearchByChange}
-          />
-          Search by Client Name
         </label>
       </SearchOptions>
 
@@ -133,11 +135,14 @@ function Estimates() {
                   </ClientDetail>
                 </ClientInfo>
               </StyledLink>
-
               <CostDetail>
-                      <strong>Investment Cost:</strong> $
-                      {estimateItem.finalEstimate.total_cost}
-                    </CostDetail>
+                <strong>Investment Cost:</strong> $
+                {estimateItem.finalEstimate.total_cost}
+              </CostDetail>
+              <ClientDetail>
+                <strong>Created On:</strong>{" "}
+                {formatDateTime(estimateItem.created_at)}
+              </ClientDetail>
             </EstimateBox>
           ))
         ) : (
