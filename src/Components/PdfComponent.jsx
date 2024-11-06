@@ -91,7 +91,7 @@ function PDFGenerator({ estimateItem, finalEstimateData }) {
     doc.setTextColor(textColor);
     doc.text("Floor", margin + 10, verticalPosition);
     doc.text("Room", margin + 100, verticalPosition);
-    doc.text("Item", margin + 200, verticalPosition);
+    doc.text("Equipments / Materials", margin + 200, verticalPosition);
     doc.text("Quantity", pageWidth - margin - 80, verticalPosition);
 
     verticalPosition += 20;
