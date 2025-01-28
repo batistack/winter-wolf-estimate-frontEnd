@@ -279,8 +279,7 @@ We stand firmly behind the quality of our work, offering:
         onChange={(e) => setSelectedType(e.target.value)}
       >
         <option value="type1">Clients Version</option>
-        <option value="type2">Shop Version</option>
-        <option value="type3"> Complete Version</option>
+      
       </StyledSelect>
       <StyledButtonG onClick={handleGeneratePDF}>Generate PDF</StyledButtonG>
     </PDFContainer>

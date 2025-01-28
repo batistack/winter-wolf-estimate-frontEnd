@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const BaseUrl = import.meta.env.VITE_BASE_URL || import.meta.env.VITE_PRODUCTION_URL
-console.log(BaseUrl , 'here')
+
+
 const handleResponse = (response) => {
   const data = response.data;
   if (data) {

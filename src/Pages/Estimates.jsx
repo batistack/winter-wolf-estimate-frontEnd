@@ -13,6 +13,7 @@ import {
   EstimateBox,
   SearchBar,
   SearchOptions,
+  Spinner
 } from "../style/EstimateStyled";
 
 function Estimates({ formatDateTime }) {
@@ -20,11 +21,13 @@ function Estimates({ formatDateTime }) {
   const [filteredEstimates, setFilteredEstimates] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchBy, setSearchBy] = useState("name"); 
+  const [isLoading, setIsLoading] = useState(true);
   const estimateEndPoint = import.meta.env.VITE_ESTIMATE_ENDPOINT;
   const finalEstimateEndPoint = import.meta.env.VITE_FINAL_ESTIMATE_ENDPOINT;
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const [estimateResponse, finalEstimateResponse] = await Promise.all([
           fetchAllItems(estimateEndPoint),
@@ -46,10 +49,15 @@ function Estimates({ formatDateTime }) {
           });
 
           setEstimates(mergedEstimates);
-          setFilteredEstimates(mergedEstimates); // Initialize filtered estimates with all data
+          setFilteredEstimates(mergedEstimates);
         }
       } catch (err) {
         console.error("Error fetching data", err);
+      } finally {
+        // Wait 3 seconds before showing the data
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
       }
     };
 
@@ -57,18 +65,17 @@ function Estimates({ formatDateTime }) {
   }, [estimateEndPoint, finalEstimateEndPoint]);
 
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+    const value = e.target.value;
+    setSearchQuery(value);
 
     let filtered = [];
     if (searchBy === "id") {
       filtered = estimates.filter((estimate) =>
-        estimate.id.toString().includes(e.target.value)
+        estimate.id.toString().includes(value)
       );
     } else if (searchBy === "name") {
       filtered = estimates.filter((estimate) =>
-        estimate.client_name
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase())
+        estimate.client_name.toLowerCase().includes(value.toLowerCase())
       );
     }
 
@@ -83,7 +90,6 @@ function Estimates({ formatDateTime }) {
     <EstimateContainer>
       <Title>Estimate Details and Costs</Title>
 
-      {/* Search Bar */}
       <SearchBar>
         <input
           type="text"
@@ -92,6 +98,7 @@ function Estimates({ formatDateTime }) {
           }`}
           value={searchQuery}
           onChange={handleSearch}
+          disabled={isLoading}
         />
       </SearchBar>
       <SearchOptions>
@@ -102,8 +109,10 @@ function Estimates({ formatDateTime }) {
             value="name"
             checked={searchBy === "name"}
             onChange={handleSearchByChange}
+            disabled={isLoading}
           />
           Search by Client Name
+        </label>
         <label>
           <input
             type="radio"
@@ -111,44 +120,48 @@ function Estimates({ formatDateTime }) {
             value="id"
             checked={searchBy === "id"}
             onChange={handleSearchByChange}
+            disabled={isLoading}
           />
           Search by Estimate ID
         </label>
-        </label>
       </SearchOptions>
 
-      <EstimateListContainer>
-        {filteredEstimates.length > 0 ? (
-          filteredEstimates.map((estimateItem, index) => (
-            <EstimateBox key={index}>
-              <StyledLink to={`/oneEstimate/${estimateItem.id}`}>
-                <ClientInfo>
-                  <ClientInfoTitle>Client Information</ClientInfoTitle>
-                  <ClientDetail>
-                    <strong>Name:</strong> {estimateItem.client_name}
-                  </ClientDetail>
-                  <ClientDetail>
-                    <strong>Address:</strong> {estimateItem.client_address}
-                  </ClientDetail>
-                  <ClientDetail>
-                    <strong>Phone:</strong> {estimateItem.client_phone}
-                  </ClientDetail>
-                </ClientInfo>
-              </StyledLink>
-              <CostDetail>
-                <strong>Investment Cost:</strong> $
-                {estimateItem.finalEstimate.total_cost}
-              </CostDetail>
-              <ClientDetail>
-                <strong>Created On:</strong>{" "}
-                {formatDateTime(estimateItem.created_at)}
-              </ClientDetail>
-            </EstimateBox>
-          ))
-        ) : (
-          <NoEstimateMessage>No estimates available</NoEstimateMessage>
-        )}
-      </EstimateListContainer>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <EstimateListContainer>
+          {filteredEstimates.length > 0 ? (
+            filteredEstimates.map((estimateItem, index) => (
+              <EstimateBox key={index}>
+                <StyledLink to={`/oneEstimate/${estimateItem.id}`}>
+                  <ClientInfo>
+                    <ClientInfoTitle>Client Information</ClientInfoTitle>
+                    <ClientDetail>
+                      <strong>Name:</strong> {estimateItem.client_name}
+                    </ClientDetail>
+                    <ClientDetail>
+                      <strong>Address:</strong> {estimateItem.client_address}
+                    </ClientDetail>
+                    <ClientDetail>
+                      <strong>Phone:</strong> {estimateItem.client_phone}
+                    </ClientDetail>
+                  </ClientInfo>
+                </StyledLink>
+                <CostDetail>
+                  <strong>Investment Cost:</strong> $
+                  {estimateItem.finalEstimate?.total_cost}
+                </CostDetail>
+                <ClientDetail>
+                  <strong>Created On:</strong>{" "}
+                  {formatDateTime(estimateItem.created_at)}
+                </ClientDetail>
+              </EstimateBox>
+            ))
+          ) : (
+            <NoEstimateMessage>No estimates available</NoEstimateMessage>
+          )}
+        </EstimateListContainer>
+      )}
     </EstimateContainer>
   );
 }

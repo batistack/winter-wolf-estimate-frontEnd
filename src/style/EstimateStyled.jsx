@@ -8,6 +8,22 @@ const blue = '#009bdf';
 const darkGrey = '#2e2e2e';
 const greyText = '#d1d1d1';
 const darkText = '#171717';
+export const Spinner = styled.div`
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s ease-in-out infinite;
+  margin: 20px auto;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;
 
 // Main Container
 export const EstimateContainer = styled.div`

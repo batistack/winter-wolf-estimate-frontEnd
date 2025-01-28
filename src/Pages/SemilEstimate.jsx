@@ -42,7 +42,7 @@ function SemiEstimate() {
   const [marketCap, setMarketCap] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [isAccessory, setIsAccessory] = useState(false); // To toggle between equipment and accessory selection
+  const [isAccessory, setIsAccessory] = useState(false); 
   const [estimate, setEstimate] = useState(null);
   const [finalEstimate, setFinalEstimate] = useState(null);
   const [activeFloorIndex, setActiveFloorIndex] = useState(0);
@@ -152,7 +152,7 @@ function SemiEstimate() {
       });
     });
 
-    // Prepare the estimate data with client details, collected items, and locations
+    // Prepare the estimate data with client details, collected items, and locations for the estimate data base
     const estimateData = {
       client_name: clientName,
       client_address: clientAddress,
