@@ -281,6 +281,7 @@ We stand firmly behind the quality of our work, offering:
         <option value="type1">Clients Version</option>
       
 
+
       
       </StyledSelect>
       <StyledButtonG onClick={handleGeneratePDF}>Generate PDF</StyledButtonG>
