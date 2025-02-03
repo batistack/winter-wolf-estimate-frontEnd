@@ -24,7 +24,9 @@ import AccesoriesAndEquipments from "./Pages/AccesoriesAndEquipments";
 function App() {
 
 
+
   
+
   const { user, logout } = useAuth();
   const formatDateTime = (dateString) => {
     const options = {
