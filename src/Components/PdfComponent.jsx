@@ -264,11 +264,7 @@ We stand firmly behind the quality of our work, offering:
   const handleGeneratePDF = () => {
     if (selectedType === "type1") {
       generatePDFType1();
-    } else if (selectedType === "type2") {
-      generatePDFType2();
-    } else if (selectedType === "type3") {
-      generatePDFType3();
-    }
+    } 
   };
 
   return (
